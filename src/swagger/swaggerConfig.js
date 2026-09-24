@@ -12,12 +12,16 @@ const options = {
     },
     servers: [
       {
+        url: "https://expense-tracker-api-9l3l.onrender.com",
+        description: "Servidor de Produção (Render)",
+      },
+      {
         url: "http://localhost:3000",
         description: "Servidor Local",
       },
     ],
   },
-  apis: ["./src/routes/*.js"], // Onde o Swagger vai procurar as anotações das rotas
+  apis: ["./src/routes/*.js"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
