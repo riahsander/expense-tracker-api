@@ -10,6 +10,10 @@ app.use(cors());
 
 setupSwagger(app);
 
+app.get("/", (req, res) => {
+  res.redirect("/docs");
+});
+
 app.use(transactionRoutes);
 
 const PORT = process.env.PORT || 3000;
