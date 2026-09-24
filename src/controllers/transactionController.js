@@ -3,7 +3,6 @@ const {
   VALID_TYPES,
   isValidText,
   parseAmount,
-  parseID,
   handleDbError,
 } = require("../helpers/validators");
 
@@ -93,12 +92,7 @@ function getBalance(req, res) {
 
 // DELETE /transactions/:id
 function deleteTransaction(req, res) {
-  const id = parseID(req.params.id);
-  if (id === null) {
-    return res
-      .status(400)
-      .json({ error: "O ID deve ser um inteiro positivo." });
-  }
+  const id = req.params.id;
 
   const query = `DELETE FROM transactions WHERE id = ?`;
 
@@ -117,12 +111,7 @@ function deleteTransaction(req, res) {
 
 // PATCH /transactions/:id
 function patchTransaction(req, res) {
-  const id = parseID(req.params.id);
-  if (id === null) {
-    return res
-      .status(400)
-      .json({ error: "O ID deve ser um inteiro positivo." });
-  }
+  const id = req.params.id;
 
   const { description, amount, type, category } = req.body;
   const fields = [];
